@@ -1,29 +1,32 @@
-library(countreg)
-library(HurdleNormal)
-library(learn2count)
-library(BiocParallel)
-library(foreach)
+library('foreach')
+library('doParallel')
+library('igraph')
+library('gbm')
+library('bnlearn')
+library('pcalg')
+library('XMRF')
 
+source("scripts/simData.R")
+source("scripts/DiscretizationF.R")
+source("scripts/ODS.R")
+source("scripts/pdn.R")
 source("scripts/result_scores.R")
-source("scripts/run_algorithm.R")
+source("scripts/runalgorithm_guide.R")
 
 #######load Adj matrix
-load("data/randomsample10-03.RData")
+load("data/simscalefreeDAG10.Rdata")
 
 ##########
-n <- 1000
-p <- ncol(SAdj)
-nsim <- 10
-#### upper bound for cardinaities of conditional sets
-maxcard <- 8
-## level of the test
+Adj <- Pmat
+Adj[Adj!=0] <- 1
+p <- ncol(Pmat) 
+n <- 1000       
+nsim <- 50    
+# level of the test
 alpha <- 2*pnorm(n^.15,lower.tail=F)
+# upper bound for cardinaities of parent sets
+npa <- 8        
 
-result.al <- result_algorithms(n, SAdj, nsim, maxcard, alpha, model="poisson",mu=5,mu.nois=0.5,theta=0.5,pi=0.7)
-round(apply(result.al,2,mean),2)[c(4,5,6,9,15,16,17,20,26,27,28,31,37,38,39,42,48,49,50,53,59,60,61,64)]
+result.al <- result_algorithms(n, p,Adj,Pmat, nsim, npa, alpha,cpu)
+round(apply(result.al,2,mean),2)[c(4,5,6,9,15,16,17,20,26,27,28,31,37,38,39,42,48,49,50,53,59,60,61,64,70,71,72,75,81,82,83,86)]
 
-result.al <- result_algorithms(n, SAdj, nsim, maxcard, alpha, model="nb",mu=5,mu.nois=0.5,theta=0.5,pi=0.7)
-round(apply(result.al,2,mean),2)[c(4,5,6,9,15,16,17,20,26,27,28,31,37,38,39,42,48,49,50,53,59,60,61,64)]
-
-result.al <- result_algorithms(n, SAdj, nsim, maxcard, alpha, model="zinb",mu=5,mu.nois=0.5,theta=0.5,pi=0.7)
-round(apply(result.al,2,mean),2)[c(4,5,6,9,15,16,17,20,26,27,28,31,37,38,39,42,48,49,50,53,59,60,61,64)]
