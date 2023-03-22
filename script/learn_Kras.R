@@ -11,7 +11,7 @@ registerDoParallel(cl)
 
 
 ## Load count matrix
-load('data/datasetKIM.RData')
+load('data/Kras_dataset.RData')
 counts <- t(counts)
 dim(counts)
 # The original data has 5618 genes (in the pathways), and 5505 observations.
