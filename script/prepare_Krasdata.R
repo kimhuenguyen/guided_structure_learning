@@ -405,5 +405,5 @@ map.genes$g.name[!(map.genes$g.entr %in% unique(unname(unlist(nodesG))))]
 rm(list=ls()[!ls() %in% c('counts','graphsKEGG', 'graphsWIKI','graphs_int_KEGG','graphs_int_WIKI',
                          'idcell_keep','map.genes','gene.name','path')])
 
-save.image(paste0(path,'/datasetKIM.RData'))
+save.image(paste0(path,'/Kras_dataset.RData'))
 
