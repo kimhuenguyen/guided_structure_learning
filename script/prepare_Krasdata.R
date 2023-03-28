@@ -34,9 +34,9 @@ library(SingleCellExperiment)
 library(BDgraph)
 theme_set(theme_bw())
 
-#setwd('F:/PHD/DATI/KRAS/data')
 
-path = 'F:/PHD/DATI/KRAS/data'
+
+path = 'data/Kras'
 
 
 
