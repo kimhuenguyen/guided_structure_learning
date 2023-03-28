@@ -4,7 +4,7 @@ In order to run the code in this repository, you need first to install the `lear
 
 ## Simulation results
 
-To reproduce simulation results, run `scripts/simulation_examples.R`.
+To reproduce simulation results, run `script/simulation_examples.R`.
 
 Change the structure of the graph to simulate from, by changing the loaded file in line 17. You can control the cardinality, number of simulations, and alpha level by changing the values of lines 24-28.
 
