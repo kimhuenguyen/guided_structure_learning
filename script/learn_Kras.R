@@ -41,8 +41,8 @@ for (i in 1:dim(data_gpath)[1]) {
 X <- data_gpath[-ind_skip,]
 dim(X)
 
-##  Estimating gene networks by Or-PPGM ( need pois.ord function in PCguide.R)
-#library(learn2count)
+##  Estimating gene networks by Or-PPGM 
+library(learn2count)
 maxcard <- 6
 alpha <- 0.05
 
