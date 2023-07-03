@@ -1,4 +1,4 @@
-#' Generate Poisson data
+#' Generate Poisson DAG data
 #'
 #' This function generates a data matrix (\eqn{n \times p}) under Poisson
 #' assumption from the coefficient matrix Pmat, and the topological ordering order.
