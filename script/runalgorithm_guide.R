@@ -3,7 +3,7 @@ result_algorithms <- function(n, p,Adj,Pmat, nsim, npa, alpha,cpu){
   W <- matrix(NA,nsim,77)
   set.seed(123)
   for (i in 1:nsim){
-    X <- simData(n,p,order,Pmat)
+    X <- simData.DAG(n,p,order,Pmat)
     colnames(X) <- seq(1,p,1)
     
     # PK2 with BIC
